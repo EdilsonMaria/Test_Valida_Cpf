@@ -25,7 +25,7 @@ validacao_cpf.py/
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/validacao_cpf.py.git
+git clone https://github.com/EdilsonMaria/Test_Valida_Cpf.git
 cd validacao_cpf.py
 ```
 
