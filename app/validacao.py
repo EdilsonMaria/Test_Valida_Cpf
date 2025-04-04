@@ -4,14 +4,14 @@ from datetime import datetime
 def saudacao():
     hora = datetime.now().hour
     if 5 <= hora < 12:
-        return "Bom dia, Boa tarde, Boa noite meu povo\nBom dia!"
+        return "Bom dia, boa tarde e/ou boa noite, meu POVO!\nBem-vindo a nossa aplicação de validação de CPF!\n\nBom dia!"
     elif 12 <= hora < 18:
-        return "Bom dia, Boa tarde, Boa noite meu povo\nBoa tarde!"
+        return "Bom dia, boa tarde e/ou boa noite, meu POVO!\nBem-vindo a nossa aplicação de validação de CPF!\n\nBoa tarde!"
     else:
-        return "Bom dia, Boa tarde, Boa noite meu povo\nBoa noite!"
+        return "Bom dia, boa tarde e/ou boa noite, meu POVO!\nBem-vindo a nossa aplicação de validação de CPF!\n\nBoa noite!"
 
 def validar_cpf(cpf):
-    cpf = re.sub(r'[^0-9]', '', cpf)  # Remove pontos e traços
+    cpf = re.sub(r'[^0-9]', '', cpf)  
 
     if len(cpf) != 11 or cpf == cpf[0] * 11:
         return False
