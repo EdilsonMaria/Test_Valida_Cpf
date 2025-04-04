@@ -1,0 +1,15 @@
+# Arquivos Python compilados
+__pycache__/
+*.pyc
+*.pyo
+
+# Relatórios de testes
+test/__pycache__/
+test/*.log
+test/*.out
+test/*.xml
+test/.pytest_cache/
+
+# Ambientes virtuais (caso use)
+venv/
+.env/
