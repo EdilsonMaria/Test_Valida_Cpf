@@ -10,16 +10,21 @@ def saudacao():
     else:
         return "Bom dia, boa tarde e/ou boa noite, meu POVO!\nBem-vindo a nossa aplicação de validação de CPF!\n\nBoa noite!"
 
-def validar_cpf(cpf):
-    cpf = re.sub(r'[^0-9]', '', cpf)  
+def validar_cpf(cpf: str) -> bool:
+    if not isinstance(cpf, str):
+        return False
+
+    cpf = re.sub(r'[^0-9]', '', cpf)
 
     if len(cpf) != 11 or cpf == cpf[0] * 11:
         return False
 
-    soma1 = sum(int(cpf[i]) * (10 - i) for i in range(9))
-    digito1 = (soma1 * 10 % 11) % 10
+    def calcular_digito(cpf_parcial):
+        soma = sum(int(digito) * peso for digito, peso in zip(cpf_parcial, range(len(cpf_parcial)+1, 1, -1)))
+        resto = soma % 11
+        return '0' if resto < 2 else str(11 - resto)
 
-    soma2 = sum(int(cpf[i]) * (11 - i) for i in range(10))
-    digito2 = (soma2 * 10 % 11) % 10
+    digito1 = calcular_digito(cpf[:9])
+    digito2 = calcular_digito(cpf[:9] + digito1)
 
-    return cpf[-2:] == f"{digito1}{digito2}"
+    return cpf[-2:] == digito1 + digito2
